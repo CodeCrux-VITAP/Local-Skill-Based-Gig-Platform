@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Navbar from "./components/navbar";
+import MainPage from "./components/mainPage";
 import "./App.css";
 
 function App() {
@@ -6,8 +8,8 @@ function App() {
 
   return (
     <>
-      <h1>Local Gig Platform</h1>
-      <p>Under development</p>
+      <Navbar />
+      <MainPage />
     </>
   );
 }
