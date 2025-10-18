@@ -66,7 +66,7 @@ function Navbar() {
           Sign up
         </button>
       </div>
-    </nav>
+</nav>
   );
 }
 
