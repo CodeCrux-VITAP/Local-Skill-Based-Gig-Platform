@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "./components/navbar";
-import MainPage from "./components/mainPage";
+import LandingPage from "./components/mainPage";
+
 import "./App.css";
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <MainPage />
+      <LandingPage />
     </>
   );
 }
