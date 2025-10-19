@@ -36,9 +36,9 @@ export default function LandingPage() {
   const steps = isClient ? clientSteps : providerSteps;
 
   return (
-    <div className="flex flex-col items-center text-gray-900 ">
-      <section className="flex flex-col items-center justify-center min-h-[100vh] text-center px-6">
-        <div className="flex gap-2 mb-6">
+    <div className="flex flex-col items-center text-gray-900 landing">
+      <section className="flex flex-col items-center justify-center min-h-[100vh] text-center px-6 top-50">
+        <div className="flex gap-2 mb-z6">
           <button
             onClick={() => setIsClient(true)}
             className={`px-4 py-2 border rounded cursor-pointer ${
