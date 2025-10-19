@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <nav
       style={{
@@ -26,13 +29,16 @@ function Navbar() {
           fontSize: "1.5rem",
           margin: 0,
           color: "#222",
+          cursor: "pointer",
         }}
+        onClick={() => navigate("/")}
       >
         TaskMasters
       </h2>
 
       <div style={{ display: "flex", alignItems: "center" }}>
         <button
+          onClick={() => navigate("/login")}
           style={{
             fontSize: "16px",
             fontWeight: 500,
@@ -42,31 +48,60 @@ function Navbar() {
             border: "1px solid transparent",
             cursor: "pointer",
             marginLeft: "0.5rem",
-            backgroundColor: "#ccc",
-            color: "#222",
+            backgroundColor: "#111",
+            color: "#fff",
+            transition: "all 0.15s ease",
+            transform: "translateY(0)",
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = "translateY(-1px)";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = "translateY(0)";
+          }}
+          onMouseDown={(e) => {
+            e.target.style.transform = "translateY(1px)";
+          }}
+          onMouseUp={(e) => {
+            e.target.style.transform = "translateY(0)";
           }}
         >
           Log in
         </button>
 
         <button
+          onClick={() => navigate("/signup")}
           style={{
             fontSize: "16px",
             fontWeight: 500,
             width: "6rem",
             padding: "0.5rem 1rem",
             borderRadius: "6px",
-            border: "1px solid #222",
+            border: "1px solid #111",
             cursor: "pointer",
             marginLeft: "0.5rem",
             backgroundColor: "transparent",
-            color: "#222",
+            color: "#111",
+            transition: "all 0.15s ease",
+            transform: "translateY(0)",
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = "translateY(-1px)";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = "translateY(0)";
+          }}
+          onMouseDown={(e) => {
+            e.target.style.transform = "translateY(2px)";
+          }}
+          onMouseUp={(e) => {
+            e.target.style.transform = "translateY(0)";
           }}
         >
           Sign up
         </button>
       </div>
-</nav>
+    </nav>
   );
 }
 
