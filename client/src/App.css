@@ -28,3 +28,10 @@ body::-webkit-scrollbar {
   width: 100rem;
   overflow-y: hidden;
 }
+.landing {
+  background-image: url('./assets/remote-work-p.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 36.5rem;
+  
+}
