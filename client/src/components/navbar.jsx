@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <nav
       style={{
@@ -26,13 +29,16 @@ function Navbar() {
           fontSize: "1.5rem",
           margin: 0,
           color: "#222",
+          cursor: "pointer",
         }}
+        onClick={() => navigate("/")}
       >
         TaskMasters
       </h2>
 
       <div style={{ display: "flex", alignItems: "center" }}>
         <button
+          onClick={() => navigate("/login")}
           style={{
             fontSize: "16px",
             fontWeight: 500,
@@ -50,6 +56,7 @@ function Navbar() {
         </button>
 
         <button
+          onClick={() => navigate("/signup")}
           style={{
             fontSize: "16px",
             fontWeight: 500,
@@ -66,7 +73,7 @@ function Navbar() {
           Sign up
         </button>
       </div>
-</nav>
+    </nav>
   );
 }
 
