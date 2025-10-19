@@ -7,19 +7,19 @@ export default function Login() {
   const [form, setForm] = useState({ username: "", password: "" });
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  const res = await login(form);
+    e.preventDefault();
+    const res = await login(form);
 
-  if (res.token) {
-    localStorage.setItem("token", res.token);
-    localStorage.setItem("role", res.user.role);
+    if (res.token) {
+      localStorage.setItem("token", res.token);
+      localStorage.setItem("role", res.user.role);
 
-    if (res.user.role === "client") navigate("/client-dashboard");
-    else if (res.user.role === "provider") navigate("/provider-dashboard");
+      if (res.user.role === "client") navigate("/client-dashboard");
+      else if (res.user.role === "provider") navigate("/provider-dashboard");
     } else {
-    alert(res.error || "Invalid credentials");
+      alert(res.error || "Invalid credentials");
     }
-    };
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
@@ -49,7 +49,19 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full py-2 bg-gray-800 text-white font-semibold rounded-md hover:bg-gray-700 transition-colors"
+            className="w-full py-2 bg-gray-800 text-white font-semibold rounded-md hover:bg-gray-900 transition-transform transform"
+            onMouseDown={(e) =>
+              (e.currentTarget.style.transform = "translateY(2px)")
+            }
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "translateY(-2px)")
+            }
+            onMouseUp={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
           >
             Login
           </button>

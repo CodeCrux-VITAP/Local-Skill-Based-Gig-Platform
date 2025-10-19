@@ -5,6 +5,8 @@ import Login from "./components/auth/Login";
 import ClientDashboard from "./components/dashboard/Client";
 import ProviderDashboard from "./components/dashboard/Provider";
 
+import "./App.css";
+
 function App() {
   return (
     <Router>

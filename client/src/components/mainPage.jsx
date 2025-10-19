@@ -51,7 +51,7 @@ export default function LandingPage() {
     <>
       <Navbar />
       <div className="flex flex-col items-center text-gray-900">
-        <section className="flex flex-col items-center justify-center min-h-[100vh] text-center px-6">
+        <section className="flex flex-col items-center justify-center min-h-[100vh] text-center px-6 top-50 landing">
           <div className="flex gap-2 mb-6">
             <button
               onClick={() => setIsClient(true)}
@@ -91,7 +91,7 @@ export default function LandingPage() {
 
           <button
             onClick={handleStart}
-            className="px-6 py-3 font-medium border rounded cursor-pointer transition-shadow hover:shadow-lg bg-gradient-to-r from-gray-200 to-gray-300"
+            className="px-7 py-3 font-medium rounded cursor-pointer transition-transform transform hover:scale-105 active:scale-95 bg-black text-white hover:bg-gray-900"
           >
             {isClient ? "Get Started" : "Join Now"}
           </button>
@@ -100,7 +100,7 @@ export default function LandingPage() {
             Already have an account?{" "}
             <button
               onClick={handleLogin}
-              className="text-blue-600 hover:underline font-medium"
+              className="text-black hover:underline font-medium"
             >
               Log in
             </button>
@@ -117,7 +117,7 @@ export default function LandingPage() {
               key={idx}
               className="flex-1 border rounded-lg p-8 text-center shadow-sm hover:shadow-lg transition-shadow transform hover:-translate-y-1 flex flex-col items-center"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full mb-4 font-bold text-gray-900 text-lg bg-gradient-to-r from-gray-200 to-gray-300">
+              <div className="flex items-center justify-center w-12 h-12 rounded-full mb-4 font-bold text-white text-lg bg-black">
                 {idx + 1}
               </div>
               <div className="text-xl font-semibold mb-2">{step.title}</div>
@@ -133,7 +133,7 @@ export default function LandingPage() {
           </p>
           <button
             onClick={handleStart}
-            className="px-6 py-3 font-medium border rounded cursor-pointer transition-shadow hover:shadow-lg bg-gradient-to-r from-gray-200 to-gray-300"
+            className="px-7 py-3 font-medium rounded cursor-pointer transition-transform transform hover:scale-105 active:scale-95 bg-black text-white hover:bg-gray-900"
           >
             {isClient ? "Get Started" : "Join Now"}
           </button>

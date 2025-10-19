@@ -48,8 +48,22 @@ function Navbar() {
             border: "1px solid transparent",
             cursor: "pointer",
             marginLeft: "0.5rem",
-            backgroundColor: "#ccc",
-            color: "#222",
+            backgroundColor: "#111",
+            color: "#fff",
+            transition: "all 0.15s ease",
+            transform: "translateY(0)",
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = "translateY(-1px)";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = "translateY(0)";
+          }}
+          onMouseDown={(e) => {
+            e.target.style.transform = "translateY(1px)";
+          }}
+          onMouseUp={(e) => {
+            e.target.style.transform = "translateY(0)";
           }}
         >
           Log in
@@ -63,11 +77,25 @@ function Navbar() {
             width: "6rem",
             padding: "0.5rem 1rem",
             borderRadius: "6px",
-            border: "1px solid #222",
+            border: "1px solid #111",
             cursor: "pointer",
             marginLeft: "0.5rem",
             backgroundColor: "transparent",
-            color: "#222",
+            color: "#111",
+            transition: "all 0.15s ease",
+            transform: "translateY(0)",
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = "translateY(-1px)";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = "translateY(0)";
+          }}
+          onMouseDown={(e) => {
+            e.target.style.transform = "translateY(2px)";
+          }}
+          onMouseUp={(e) => {
+            e.target.style.transform = "translateY(0)";
           }}
         >
           Sign up
