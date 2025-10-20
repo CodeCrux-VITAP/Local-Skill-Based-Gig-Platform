@@ -28,3 +28,10 @@ body::-webkit-scrollbar {
   width: 100rem;
   overflow-y: hidden;
 }
+
+.nav {
+  position: "fixed";
+  top: 0;
+  left: 0;
+  right: 0;
+}

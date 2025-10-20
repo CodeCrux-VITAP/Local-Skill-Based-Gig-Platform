@@ -121,6 +121,93 @@ app.get("/me", authMiddleware, async (req, res) => {
   }
 });
 
+app.post("/gigs", authMiddleware, async (req, res) => {
+  const { title, description } = req.body;
+
+  try {
+    if (req.user.role !== "client") {
+      return res.status(403).json({ error: "Only clients can create gigs" });
+    }
+
+    const result = await db.query(
+      `INSERT INTO gigs (client_id, title, description, city) 
+       VALUES ($1,$2,$3,$4) RETURNING *`,
+      [req.user.id, title, description, req.user.city]
+    );
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.get("/gigs", authMiddleware, async (req, res) => {
+  try {
+    const result = await db.query(
+      `SELECT 
+         g.id, 
+         g.title, 
+         g.description, 
+         g.city, 
+         g.created_at,
+         u.username AS client_name
+       FROM gigs g
+       JOIN users u ON g.client_id = u.id`
+    );
+    console.log("Fetched gigs:", result.rows);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.put("/gigs/:id", authMiddleware, async (req, res) => {
+  const { id } = req.params;
+  const { title, description } = req.body;
+
+  try {
+    const gigCheck = await db.query("SELECT * FROM gigs WHERE id=$1", [id]);
+    if (!gigCheck.rows.length)
+      return res.status(404).json({ error: "Gig not found" });
+
+    if (gigCheck.rows[0].client_id !== req.user.id) {
+      return res.status(403).json({ error: "Unauthorized" });
+    }
+
+    const result = await db.query(
+      "UPDATE gigs SET title=$1, description=$2 WHERE id=$3 RETURNING *",
+      [title, description, id]
+    );
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.delete("/gigs/:id", authMiddleware, async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const gigCheck = await db.query("SELECT * FROM gigs WHERE id=$1", [id]);
+    if (!gigCheck.rows.length)
+      return res.status(404).json({ error: "Gig not found" });
+
+    if (gigCheck.rows[0].client_id !== req.user.id) {
+      return res.status(403).json({ error: "Unauthorized" });
+    }
+
+    await db.query("DELETE FROM gigs WHERE id=$1", [id]);
+    res.json({ message: "Gig deleted successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
