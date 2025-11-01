@@ -19,9 +19,8 @@ const db = new Client({
 });
 
 db.connect()
-  .then(() => console.log("✅ PostgreSQL connected"))
+  .then(() => console.log("✅ PostgreSQL connected via session pooler"))
   .catch((err) => console.error("❌ DB connection error:", err.message));
-
 app.post("/signup", async (req, res) => {
   const { username, password, city, role, bio } = req.body;
 
