@@ -5,6 +5,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { Client } = require("pg");
 
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first");
+
 const app = express();
 app.use(cors());
 app.use(express.json());
